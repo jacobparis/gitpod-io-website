@@ -331,6 +331,14 @@ export const authors: { [idx: string]: Author } = {
     },
     description: "",
   },
+  filiptronicek: {
+    name: "Filip Troníček",
+    socialProfiles: {
+      github: "filiptronicek",
+      twitter: "filiptronicek",
+    },
+    description: "",
+  },
 };
 
 export const authorSocialMediaLinks: SocialMediaLinks = Object.entries(
