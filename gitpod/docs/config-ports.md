@@ -61,13 +61,28 @@ The property `onOpen` configures port opening behaviors:
 
 ```yaml
 ports:
-  - port: 8080
+  - name: Svelte
+    description: webview for debugging `svelte`
+    port: 8080
     onOpen: open-browser
 ```
 
 ### Configure port visibility
 
 Port visibility can be set via the [`.gitpod.yml`](/docs/references/gitpod-yml), or manually changed within the IDE or editor.
+
+## Note for Ports
+
+You can give ports `name` and `description` (both optional). They will help you to remind/explain what this port/ports used for.
+
+They will be displayed in vscode sidebar remote explorer and reflect from `.gitpod.yml` immediately.
+
+<figure>
+    <img class="shadow-medium w-full rounded-xl max-w-3xl mt-x-small" alt="Display port name and description on vscode remote explorer" src="/images/docs/ports-with-name.png" />
+    <figcaption>Display port name and description on vscode remote explorer</figcaption>
+</figure>
+
+## Port Ranges
 
 The property `visibility` configures who can access a port:
 
@@ -94,6 +109,8 @@ Currently, toggling port visibility is not possible in JetBrains IDEs.
 All port configurations can be applied to ranges as well as single ports.
 
 **Example:** Prevent notifications for ports between 3000 and 8999.
+
+Ports will be shown in vscode remote explorer once they are opened.
 
 ```yaml
 ports:

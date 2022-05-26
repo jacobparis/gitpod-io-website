@@ -34,6 +34,8 @@ Below is a full reference of all available properties. To see the underlying sch
     - [`jetbrains.[product].plugins`](#jetbrainsproductplugins)
     - [`jetbrains.[product].prebuilds`](#jetbrainsproductprebuilds)
   - [`ports`](#ports)
+    - [`ports[n].name`](#portsnname)
+    - [`ports[n].description`](#portsndescription)
     - [`ports[n].onOpen`](#portsnonopen)
     - [`ports[n].port`](#portsnport)
     - [`ports[n].visibility`](#portsnvisibility)
@@ -399,11 +401,41 @@ Configure how Gitpod treats various ports your application may listen on. You ca
 
 ```yaml
 ports:
-  - port: 3000
+  - name: Website
+    port: 3000
     onOpen: open-preview
-  - port: 10000
+  - name: VNC
+    description: full GUI Virtual Desktop
+    port: 6080
+    onOpen: open-browser
+  - name: Server
+    port: 10000
     onOpen: ignore
 ```
+
+### `ports[n].name`
+
+Define a name for the port, also shown on the vscode sidebar remote explorer.
+
+<div class="overflow-x-auto">
+
+| Type     | Default   |
+| -------- | --------- |
+| `string` | `<empty>` |
+
+</div>
+
+### `ports[n].description`
+
+Define description of the port, also shown as tooltip of port on vscode sidebar remote explorer (hover can show tooltip).
+
+<div class="overflow-x-auto">
+
+| Type     | Default   |
+| -------- | --------- |
+| `string` | `<empty>` |
+
+</div>
 
 ### `ports[n].onOpen`
 
