@@ -5,7 +5,7 @@ excerpt: With local Settings Sync you can sync your VS Code preferences from VS 
 slug: introducing-local-settings-sync
 image: teaser.jpg
 teaserImage: teaser.jpg
-title: Introducing local Settings Sync
+title: Introducing VS Code local Settings Sync
 ---
 
 <script context="module">
