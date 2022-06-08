@@ -3,7 +3,8 @@ author: filiptronicek, jeanp413, loujaybee, akosyakov
 date: Monday, 23 May 2022 15:00:00 UTC
 excerpt: With local Settings Sync you can sync your VS Code preferences from VS Code Browser to VS Code Desktop and vice versa.
 slug: introducing-local-settings-sync
-teaserImage: teaser.png
+image: teaser.jpg
+teaserImage: teaser.jpg
 title: Introducing local Settings Sync
 ---
 
