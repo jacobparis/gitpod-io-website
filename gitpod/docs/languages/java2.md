@@ -47,18 +47,28 @@ Using [SDKMAN!](https://sdkman.io/usage#listversions) you can quickly update you
 
 To ensure Gitpod workspaces always start with the correct version,
 
-1. Create a `.gitpod.yml` with: `touch .gitpod.yml`
-2. Create a custom Dockerfile: `touch .gitpod.Dockerfile`
+1. Create a `.gitpod.yml`
+
+```bash
+touch .gitpod.yml
+```
+
+2. Create a custom Dockerfile
+
+```bash
+touch .gitpod.Dockerfile
+```
+
 3. Reference your newly created Dockerfile in your `.gitpod.yml`
 
-```
+```yaml
 image:
   file: .gitpod.Dockerfile
 ```
 
-4. Update your `.gitpod.Dockerfile` to install your applications dependency versions
+4. Update your `.gitpod.Dockerfile` to install your dependency versions
 
-```
+```Dockerfile
 FROM gitpod/workspace-full
 
 USER gitpod
@@ -68,21 +78,21 @@ RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && \
     sdk default java 17.0.3-ms"
 ```
 
-5. Commit and push both the `gitpod.yml` and `.gitpod.Dockerfile` files
+5. Commit and push both `gitpod.yml` and `.gitpod.Dockerfile`
 
-```
+```bash
 git commit -m "configuring gitpod with java" && git push
 ```
 
-6. Restart your workspace
+6. Stop and start (restart) your workspace
 
-```
+```bash
 gp stop
 ```
 
-7. Test that your dependencies are correct
+7. Test your dependencies are correct in the new workspace
 
-```
+```bash
 sdk current
 ```
 
@@ -90,9 +100,38 @@ sdk current
 
 <!-- TODO: Validate for any more Gotchas -->
 
----
+### Start your Java application
+
+When starting a workspace, you can configure [start tasks](/docs/config-start-tasks) to be initiated on workspace start.
+
+1. Add the command to start your application to your `.gitpod.yml`
+
+```yaml
+tasks:
+  - command: java <application-entry>
+```
+
+<!-- TODO: Consider adding examples for starting with Maven/Gradle, etc-->
+
+2. Stop and start (restart) your workspace
+
+```bash
+gp stop
+```
+
+3. Validate your commands are running
+
+```shell
+gp tasks
+```
+
+**Tip:** If you're using [VS Code Browser](/docs/ides-and-editors/vscode-browser) or [VS Code Desktop](/docs/ides-and-editors/vscode), then your tasks will open as terminal windows. You can configure their layout using the [openMode](/docs/config-start-tasks#openmode) property.
+
+<!-- TODO: Add screenshot -->
 
 <!-- ARCHIVE / OLD CONTENT -->
+
+---
 
 https://sdkman.io/---
 section: languages
