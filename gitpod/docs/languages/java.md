@@ -1,6 +1,226 @@
+<!-- NEW PAGE -->
+
+# Getting Started / Quick Start
+
+Gitpod comes with great support for Java.
+
+This guide walks you through configuring a Java application with Gitpod.
+
+<!-- TODO: @nancy -->
+
+# Part 1: Setting up your project
+
+## Pre-Requisites
+
+- [Docker](https://docs.docker.com/)
+- [YAML](https://yaml.org/spec/1.1/) <!-- TODO: Check if this is the correct version -->
+- [Linux](https://www.linux.org/)
+- [Bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
+- [Environment variables](https://wiki.archlinux.org/title/environment_variables)
+
+## Getting Started
+
+To see a full working Java application: open [gitpod-io/spring-petclinic](https://github.com/gitpod-io/spring-petclinic/) in Gitpod.
+
+## Installing dependencies
+
+### The Gitpod default base image: "workspace-full"
+
+The default Gitpod workspace <!-- TODO: Link to workspace page --> image default is <!-- TODO: Link to workspace-full contents documentation --> [workspace-full](https://github.com/gitpod-io/workspace-images) based on [Ubuntu](https://ubuntu.com/).
+
+Along with other languages and tools<!-- TODO: Link to full list -->, this base image includes:
+
+- [SDKMAN!](https://sdkman.io/) `v5.15.0` (`sdk version`)
+- [Java](https://www.java.com) `v11.0.13` (`java -version`)
+- [Gradle](https://gradle.org/) `v7.4.1` (`gradle -version`)
+- [Maven](https://maven.apache.org/) `v3.8.5` (`mvn -version`)
+
+<!-- TODO: Note about OCI compliance -->
+
+### Updating Java, Maven & Gradle versions (using SDKMAN!)
+
+Using [SDKMAN!](https://sdkman.io/usage#listversions) you can quickly update your version dependencies:
+
+`sdk install <candidate> [version]`
+
+> Swapping versions manually is a quick way to explore Gitpod. However, we **strongly recommend to codify dependency versions in a gitpod.yml or Dockerfile**.
+
+### Setting up a custom Dockerfile
+
+To ensure Gitpod workspaces always start with the correct version,
+
+1. Create a `.gitpod.yml`
+
+```bash
+touch .gitpod.yml
+```
+
+2. Create a custom Dockerfile
+
+```bash
+touch .gitpod.Dockerfile
+```
+
+3. Reference your newly created Dockerfile in your `.gitpod.yml`
+
+```yaml
+image:
+  file: .gitpod.Dockerfile
+```
+
+4. Update your `.gitpod.Dockerfile` to install your dependency versions
+
+```Dockerfile
+FROM gitpod/workspace-full
+
+USER gitpod
+
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && \
+    sdk install java 17.0.3-ms && \
+    sdk default java 17.0.3-ms"
+```
+
+5. Commit and push both `gitpod.yml` and `.gitpod.Dockerfile`
+
+```bash
+git commit -m "configuring gitpod with java" && git push
+```
+
+6. Stop and start (restart) your workspace
+
+```bash
+gp stop
+```
+
+7. Test your dependencies are correct in the new workspace
+
+```bash
+sdk current
+```
+
+**Note:** If you changes are not taking effect, ensure your workspace is building from the correct [context](/docs/context-urls), where your `gitpod.yml` or `gitpod.Dockerfile` are checked in to version control.
+
+<!-- TODO: Validate for any more Gotchas -->
+
+## Running the Java application
+
+When starting a workspace, you can configure [start tasks](/docs/config-start-tasks) to be initiated on workspace start.
+
+1. Add the command to start your application to your `.gitpod.yml`
+
+```yaml
+tasks:
+  - command: java <application-entry>
+```
+
+<!-- TODO: Consider adding examples for starting with Maven/Gradle, etc-->
+
+2. Stop and start (restart) your workspace
+
+```bash
+gp stop
+```
+
+3. Validate your commands are running
+
+```shell
+gp tasks
+```
+
+**Tip:** If you're using [VS Code Browser](/docs/ides-and-editors/vscode-browser) or [VS Code Desktop](/docs/ides-and-editors/vscode), then your tasks will open as terminal windows. You can configure their layout using the [openMode](/docs/config-start-tasks#openmode) property.
+
+See [.gitpod.yml reference](/docs/references/gitpod-yml) for more.
+
+<!-- TODO: Add screenshot -->
+
+### Configuring environment variables
+
+Gitpod supports encrypted, user-specific environment variables.
+
+Environment variables are stored as part of your user settings and can be used to set access tokens, or pass any other kind of user-specific information to your workspaces. You can set environment variables using `gp env`, or in project and account settings.
+
+See [environment variables](/docs/environment-variables) for more.
+
+### Configuring ports
+
+When your project starts a service that listens on a given port, Gitpod automatically serves traffic to this port of your application on an authenticated URL.
+
+If you want to configure ports, such as: their visibility, what Gitpod does when it detects a new port being available, etc, you do that in the ports section of the .gitpod.yml configuration file.
+
+For example, add the following to your `.gitpod.yml` to configure port `3000` to open in your browser on workspace start. See [ports](/docs/config-ports) for detailed information.
+
+```yaml
+ports:
+  - port: 3000
+    onOpen: open-browser
+```
+
+### Configuring localhost
+
+Your development application might rely on the `localhost` hostname.
+
+There are two main options to resolve localhost issues:
+
+1. **Replace localhost references** - Swap `localhost` references within the application with the output of `gp url <port>`, typically via an [environment variable](/docs/environment-variables).
+
+```yaml
+tasks:
+  - command: |
+    export DEV_ENVIRONMENT_HOST=`gp url 3000`
+    java <application-entry>
+```
+
+2. **Setup localhost port forwarding** - Connect the localhost hostname on your machine with your running workspace means you don't need to replace localhost references. This is useful if you're working with a framework that needs localhost and it cannot be reconfigured.
+
+   - If you setup [local companion](/docs/ides-and-editors/local-companion) for your workspace all ports will be forwarded automatically.
+   - With [VS Code Desktop](/docs/ides-and-editors/vscode), remote port-forwarding is handled automatically and can be configured via the ports view within VS Code Desktop.
+   - With JetBrains IDEs using [JetBrains Gateway](/docs/ides-and-editors/jetbrains-gateway) you can setup remote port-forwarding manually.
+
+For detailed information on remote port-forwarding, please see [configure ports](/docs/config-ports).
+
+### Configuring JetBrains plugins
+
+To set default plugins to be installed for all users starting a workspace for the project, add a list of the JetBrains plugin identifiers to your `.gitpod.yml` under `vscode.extensions`.
+
+<!-- TODO: Add list of popular Java plugins -->
+<!-- TODO: Update with note about how plugin settings sync works with JetBrains -->
+
+```yaml
+vscode:
+  extensions:
+    - redhat.java
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-test
+    - pivotal.vscode-spring-boot
+```
+
+See [.gitpod.yml reference](/docs/references/gitpod-yml) for more.
+
+### Configuring VS Code plugins
+
+To set default extensions to be installed for all users starting a workspace for the project, add a list of the VS Code extension identifiers to your `.gitpod.yml`.
+
+<!-- TODO: Add list of popular VS Code plugins -->
+
+```yaml
+jetbrains:
+  intellij:
+    plugins:
+      - com.intellij.lang.jsgraphql
+```
+
+**Tip:** To ensure changes made to settings on [VS Code Desktop](/docs/ides-and-editors/vscode) are synced with [VS Code Browser](/docs/ides-and-editors/vscode-browser), make sure to enable [VS Code Settings Sync](/docs/ides-and-editors/settings-sync).
+
+See [.gitpod.yml reference](/docs/references/gitpod-yml) for more.
+
+<!-- ARCHIVE / OLD CONTENT -->
+
 ---
+
+https://sdkman.io/---
 section: languages
 title: Java in Gitpod
+
 ---
 
 <script context="module">
