@@ -3,8 +3,8 @@ author: filiptronicek, jeanp413, loujaybee, akosyakov
 date: Monday, 23 May 2022 15:00:00 UTC
 excerpt: With local Settings Sync you can sync your VS Code preferences from VS Code Browser to VS Code Desktop and vice versa.
 slug: introducing-local-settings-sync
-image: teaser.jpg
-teaserImage: teaser.jpg
+image: teaser.png
+teaserImage: teaser.png
 title: Introducing VS Code local Settings Sync
 ---
 
@@ -32,5 +32,7 @@ The process for setting local Settings Sync up inside VS Code Desktop is as foll
 - Enable settings sync from the Manage gear menu at the bottom of the Activity Bar.
 - Resolve any settings conflicts - there will most likely be differences between your remote VS Code config and your local one. This step makes sure you retain the preferences you want.
 - Voilà! Now you should see your preferences be reflected on VS Code Browser inside of Gitpod as well.
+
+![Command Pallete screenshot](../../static/blog/../../../static/images/blog/introducing-local-settings-sync/palette.png)
 
 We'd love for you to try out the new local Settings Sync for yourself, and would love to hear from you in our [community](https://www.gitpod.io/community). We look forward to hearing from you!
