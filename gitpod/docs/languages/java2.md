@@ -22,7 +22,7 @@ This guide walks you through configuring a Java application with Gitpod.
 
 To see a full working Java application: open [gitpod-io/spring-petclinic](https://github.com/gitpod-io/spring-petclinic/) in Gitpod.
 
-## Gitpod default base image "workspace-full"
+## Default base image "workspace-full"
 
 The default Gitpod workspace <!-- TODO: Link to workspace page --> image default is <!-- TODO: Link to workspace-full contents documentation --> [workspace-full](https://github.com/gitpod-io/workspace-images) based on [Ubuntu](https://ubuntu.com/).
 
@@ -35,15 +35,60 @@ Along with other languages and tools<!-- TODO: Link to full list -->, this base 
 
 <!-- TODO: Note about OCI compliance -->
 
-### Switching Java versions
+### Updating Java, Maven & Gradle versions (using SDKMAN!)
 
-You can quickly switch Java versions using SDKMAN!
+Using [SDKMAN!](https://sdkman.io/usage#listversions) you can quickly update your version dependencies:
 
-If the default image tooling versions do not meet your needs, you can:
+`sdk install <candidate> [version]`
 
-1. Build, or extend the [workspace base image](https://github.com/gitpod-io/workspace-images) using a [Dockerfile](/docs/config-docker)
-2. Update the base image for a specific version
-3. Dynamically
+> Swapping versions manually is a quick way to explore Gitpod. However, we **strongly recommend to codify dependency versions in a gitpod.yml or Dockerfile**.
+
+### Setting up a custom Dockerfile
+
+To ensure Gitpod workspaces always start with the correct version,
+
+1. Create a `.gitpod.yml` with: `touch .gitpod.yml`
+2. Create a custom Dockerfile: `touch .gitpod.Dockerfile`
+3. Reference your newly created Dockerfile in your `.gitpod.yml`
+
+```
+image:
+  file: .gitpod.Dockerfile
+```
+
+4. Update your `.gitpod.Dockerfile` to install your applications dependency versions
+
+```
+FROM gitpod/workspace-full
+
+USER gitpod
+
+RUN bash -c ". /home/gitpod/.sdkman/bin/sdkman-init.sh && \
+    sdk install java 17.0.3-ms && \
+    sdk default java 17.0.3-ms"
+```
+
+5. Commit and push both the `gitpod.yml` and `.gitpod.Dockerfile` files
+
+```
+git commit -m "configuring gitpod with java" && git push
+```
+
+6. Restart your workspace
+
+```
+gp stop
+```
+
+7. Test that your dependencies are correct
+
+```
+sdk current
+```
+
+**Note:** If you changes are not taking effect, ensure your workspace is building from the correct [context](/docs/context-urls), where your `gitpod.yml` or `gitpod.Dockerfile` are checked in to version control.
+
+<!-- TODO: Validate for any more Gotchas -->
 
 ---
 
