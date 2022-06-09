@@ -427,7 +427,7 @@ Define a name for the port, also shown on the vscode sidebar remote explorer.
 
 ### `ports[n].description`
 
-Define description of the port, also shown as tooltip of port on vscode sidebar remote explorer (hover can show tooltip).
+Adds a description to the port, also shown as a tooltip (on hover) of the port in the `Remote explorer` in VS Code's side bar.
 
 <div class="overflow-x-auto">
 
