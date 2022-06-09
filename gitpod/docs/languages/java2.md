@@ -1,19 +1,53 @@
+<!-- NEW PAGE -->
 
-<!-- NEW PAGE --> 
+# Getting Started / Quick Start
 
-## Getting Started / Quick Start
+Gitpod comes with great support for Java.
 
-<!-- TODO: @nancy --> 
+This guide walks you through configuring a Java application with Gitpod.
 
-## Set up JetBrains Plugins
+<!-- TODO: @nancy -->
 
-<!-- TODO: @loujaybee --> 
+# Part 1: Setting up your project
+
+## Pre-Requisites
+
+- [Docker](https://docs.docker.com/)
+- [YAML](https://yaml.org/spec/1.1/) <!-- TODO: Check if this is the correct version -->
+- [Linux](https://www.linux.org/)
+- [Bash](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html)
+- [Environment variables](https://wiki.archlinux.org/title/environment_variables)
+
+## Getting Started
+
+To see a full working Java application: open [gitpod-io/spring-petclinic](https://github.com/gitpod-io/spring-petclinic/) in Gitpod.
+
+## Gitpod default base image "workspace-full"
+
+The default Gitpod workspace <!-- TODO: Link to workspace page --> image default is <!-- TODO: Link to workspace-full contents documentation --> [workspace-full](https://github.com/gitpod-io/workspace-images) based on [Ubuntu](https://ubuntu.com/).
+
+Along with other languages and tools<!-- TODO: Link to full list -->, this base image includes:
+
+- [SDKMAN!](https://sdkman.io/) `v5.15.0` (`sdk version`)
+- [Java](https://www.java.com) `v11.0.13` (`java -version`)
+- [Gradle](https://gradle.org/) `v7.4.1` (`gradle -version`)
+- [Maven](https://maven.apache.org/) `v3.8.5` (`mvn -version`)
+
+<!-- TODO: Note about OCI compliance -->
+
+### Switching Java versions
+
+You can quickly switch Java versions using SDKMAN!
+
+If the default image tooling versions do not meet your needs, you can:
+
+1. Build, or extend the [workspace base image](https://github.com/gitpod-io/workspace-images) using a [Dockerfile](/docs/config-docker)
+2. Update the base image for a specific version
+3. Dynamically
 
 ---
 
-
-<!-- ARCHIVE / OLD CONTENT --> 
-
+<!-- ARCHIVE / OLD CONTENT -->
 
 https://sdkman.io/---
 section: languages
