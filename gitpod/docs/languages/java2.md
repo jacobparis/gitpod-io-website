@@ -22,7 +22,9 @@ This guide walks you through configuring a Java application with Gitpod.
 
 To see a full working Java application: open [gitpod-io/spring-petclinic](https://github.com/gitpod-io/spring-petclinic/) in Gitpod.
 
-## Default base image "workspace-full"
+## Installing dependencies
+
+### The Gitpod default base image: "workspace-full"
 
 The default Gitpod workspace <!-- TODO: Link to workspace page --> image default is <!-- TODO: Link to workspace-full contents documentation --> [workspace-full](https://github.com/gitpod-io/workspace-images) based on [Ubuntu](https://ubuntu.com/).
 
@@ -100,7 +102,7 @@ sdk current
 
 <!-- TODO: Validate for any more Gotchas -->
 
-### Start your Java application
+## Running your Java application
 
 When starting a workspace, you can configure [start tasks](/docs/config-start-tasks) to be initiated on workspace start.
 
@@ -128,6 +130,43 @@ gp tasks
 **Tip:** If you're using [VS Code Browser](/docs/ides-and-editors/vscode-browser) or [VS Code Desktop](/docs/ides-and-editors/vscode), then your tasks will open as terminal windows. You can configure their layout using the [openMode](/docs/config-start-tasks#openmode) property.
 
 <!-- TODO: Add screenshot -->
+
+### Configuring ports
+
+When your project starts a service that listens on a given port, Gitpod automatically serves traffic to this port of your application on an authenticated URL.
+
+If you want to configure ports, such as: their visibility, what Gitpod does when it detects a new port being available, etc, you do that in the ports section of the .gitpod.yml configuration file.
+
+For example, add the following to your `.gitpod.yml` to configure port `3000` to open in your browser on workspace start. See [ports](/docs/config-ports) for detailed information.
+
+```yaml
+ports:
+  - port: 3000
+    onOpen: open-browser
+```
+
+### Configuring localhost
+
+Your development application might rely on the `localhost` hostname.
+
+There are two main options to resolve localhost issues:
+
+1. **Replace localhost references** - Swap `localhost` references within the application with the output of `gp url <port>`, typically via an [environment variable](/docs/environment-variables).
+
+```yaml
+tasks:
+  - command: |
+    export DEV_ENVIRONMENT_HOST=`gp url 3000`
+    java <application-entry>
+```
+
+2. **Setup localhost port forwarding** - Connect the localhost hostname on your machine with your running workspace means you don't need to replace localhost references. This is useful if you're working with a framework that needs localhost and it cannot be reconfigured.
+
+   - If you setup [local companion](/docs/ides-and-editors/local-companion) for your workspace all ports will be forwarded automatically.
+   - With [VS Code Desktop](/docs/ides-and-editors/vscode), remote port-forwarding is handled automatically and can be configured via the ports view within VS Code Desktop.
+   - With JetBrains IDEs using [JetBrains Gateway](/docs/ides-and-editors/jetbrains-gateway) you can setup remote port-forwarding manually.
+
+For detailed information on remote port-forwarding, please see [configure ports](/docs/config-ports).
 
 <!-- ARCHIVE / OLD CONTENT -->
 
