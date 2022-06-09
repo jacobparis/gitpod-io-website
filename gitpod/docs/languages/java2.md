@@ -131,6 +131,14 @@ gp tasks
 
 <!-- TODO: Add screenshot -->
 
+### Configuring environment variables
+
+Gitpod supports encrypted, user-specific environment variables.
+
+Environment variables are stored as part of your user settings and can be used to set access tokens, or pass any other kind of user-specific information to your workspaces. You can set environment variables using `gp env`, or in project and account settings.
+
+See [environment variables](/docs/environment-variables) for more.
+
 ### Configuring ports
 
 When your project starts a service that listens on a given port, Gitpod automatically serves traffic to this port of your application on an authenticated URL.
