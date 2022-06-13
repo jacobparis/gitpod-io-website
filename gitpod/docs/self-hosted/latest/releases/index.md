@@ -24,3 +24,13 @@ New versions are rolled first to all users that are on the `community` license, 
 ### Testing Policy
 
 For each release, we validate that core Gitpod workflows function as expected via a series of automated and manual tests. These tests are performed on Gitpod installations running on our reference architectures This should help ensure that Gitpod works for you, assuming your architecture is close to the reference architecture.
+
+## Upgrade Guides
+
+<!-- ToDo: This should live on it's own page once we have three levels of hierarchy in the nav bar - https://github.com/gitpod-io/website/issues/2221-->
+
+This section informs you if there are specific considerations to take into account when upgrading to a specific version.
+
+### Upgrading to 2022.05
+
+No breaking changes and thus specific recommendations when updating. Please follow the normal upgrade procedure mentioned on the [Updating your Gitpod Installation](../updating) page.
