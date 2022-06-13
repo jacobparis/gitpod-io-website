@@ -5,6 +5,7 @@
   let selectedQuote: Quote = quotes[0];
   import LinkButton from "$lib/components/ui-library/link-button";
   import { onMount } from "svelte";
+  import { blur, fly } from "svelte/transition";
 
   let clazz = "";
   export { clazz as class };
@@ -12,23 +13,21 @@
   let isHovered = false;
   let interval: any;
 
-  const swipe = () => {
-    interval = setInterval(() => {
-      if (isHovered) return;
-      let currentIndex = quotes.findIndex(
-        (quote) => quote.text === selectedQuote.text
-      );
-      if (currentIndex === quotes.length - 1) {
-        currentIndex = 0;
-        selectedQuote = quotes[0];
-      } else {
-        selectedQuote = quotes[currentIndex + 1];
-      }
-    }, 3000);
+  const swiper = () => {
+    if (isHovered) return;
+    let currentIndex = quotes.findIndex(
+      (quote) => quote.text === selectedQuote.text
+    );
+    if (currentIndex === quotes.length - 1) {
+      currentIndex = 0;
+      selectedQuote = quotes[0];
+    } else {
+      selectedQuote = quotes[currentIndex + 1];
+    }
   };
 
   onMount(() => {
-    swipe();
+    interval = setInterval(swiper, 2000);
 
     return () => {
       clearInterval(interval);
@@ -92,39 +91,43 @@
           </button>
         {/each}
       </div>
-      <div
-        class="items-start justify-center mt-macro md:mt-small text-center md:text-left flex-wrap md:flex h-auto"
-      >
-        <div class="w-full md:w-1/2">
-          <img
-            src={selectedQuote.img.src}
-            alt={selectedQuote.img.alt}
-            class:square={selectedQuote.img.square}
-            class="w-full sm:rounded-3xl mx-auto"
-          />
-        </div>
+      {#key selectedQuote}
         <div
-          class="text flex w-full md:w-1/2 justify-center flex-col flex-1 px-xx-small py-xx-small md:py-0 sm:pl-x-small lg:pl-small lg:pr-0"
+          class="items-start justify-center mt-macro md:mt-small text-center md:text-left flex-wrap md:flex h-auto"
         >
-          <p class="text-large">
-            &ldquo;{selectedQuote.text}&rdquo;
-          </p>
+          <div class="w-full md:w-1/2">
+            <img
+              src={selectedQuote.img.src}
+              alt={selectedQuote.img.alt}
+              class:square={selectedQuote.img.square}
+              class="w-full sm:rounded-3xl mx-auto"
+              in:blur={{ duration: 1500 }}
+            />
+          </div>
+          <div
+            class="text flex w-full md:w-1/2 justify-center flex-col flex-1 px-xx-small py-xx-small md:py-0 sm:pl-x-small lg:pl-small lg:pr-0"
+            in:fly={{ x: 50, duration: 1000 }}
+          >
+            <p class="text-large">
+              &ldquo;{selectedQuote.text}&rdquo;
+            </p>
 
-          <p class="font-bold mt-xx-small">
-            {selectedQuote.author}, {selectedQuote.jobTitle}
-          </p>
+            <p class="font-bold mt-xx-small">
+              {selectedQuote.author}, {selectedQuote.jobTitle}
+            </p>
 
-          {#if selectedQuote.link}
-            <div class="mt-xx-small">
-              <LinkButton
-                href={selectedQuote.link.href}
-                variant="tertiary"
-                size="medium">{selectedQuote.link.text}</LinkButton
-              >
-            </div>
-          {/if}
+            {#if selectedQuote.link}
+              <div class="mt-xx-small">
+                <LinkButton
+                  href={selectedQuote.link.href}
+                  variant="tertiary"
+                  size="medium">{selectedQuote.link.text}</LinkButton
+                >
+              </div>
+            {/if}
+          </div>
         </div>
-      </div>
+      {/key}
     </div>
   </Card>
 </div>
