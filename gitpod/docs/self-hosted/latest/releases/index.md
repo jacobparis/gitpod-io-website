@@ -1,29 +1,26 @@
 ---
 section: self-hosted/latest
-title: Gitpod Self-Hosted releases
+title: Self-Hosted Gitpod Releases and Versioning
 ---
 
 <script context="module">
   export const prerender = true;
 </script>
 
-# Gitpod Self-Hosted releases
+# Self-Hosted Gitpod Releases and Versioning
 
-> ⚠️ **Deprecated Content**
->
-> The content of this page is deprecated.
+### Release Policy
 
-## Currently Supported
+Github Self-Hosted is released once a month, usually at the end of each month. The versioning schema is: `YYYY.MM.V`. Each new version of Self-Hosted Gitpod includes all of the changes made to Gitpod up to the release date. This means that the Self-Hosted version of Gitpod is at most one month behind the SaaS version. Outside of the regular monthly releases, hot-fix releases are possible to add functionality or fix bugs. Hot fix releases increment the `V` in the aforementioned versioning schema.
 
-- [2022.02.0](https://github.com/gitpod-io/gitpod/releases/tag/2022.02.0) (February 2022)
-- [2022.01.1](https://github.com/gitpod-io/gitpod/releases/tag/2022.01.1) (January 2022)
+### Support Policy
 
-## Deprecated
+Gitpod is committed to supporting the last 2 versions of Self-Hosted Gitpod with patches and security updates.
 
-- [v0.10.0](../helm-deprecated)
-- v0.9.0
-- v0.8.0
-- v0.7.0
-- v0.5.0
-- v0.4.0
-- v0.3.0
+### Roll out Policy
+
+New versions are rolled first to all users that are on the `community` license, i.e. are on the stable branch. Customers with a paid license receive the newest version one week later.
+
+### Testing Policy
+
+For each release, we validate that core Gitpod workflows function as expected via a series of automated and manual tests. These tests are performed on Gitpod installations running on our reference architectures This should help ensure that Gitpod works for you, assuming your architecture is close to the reference architecture.
