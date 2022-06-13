@@ -159,7 +159,7 @@ A commands collection of workspace `timeout`
 
 Extend workspace timeout for current workspace, which will make other workspaces' timeout reset to default.
 
-Default timeout and extended timeout depend on your [plans](https://gitpod.io/plans) or [team plans](https://gitpod.io/teams)
+The default timeout, and the ability to extend a workspace timeout depends on your [plan](https://gitpod.io/plans) or [team plans](https://gitpod.io/teams)
 
 ## ports
 
