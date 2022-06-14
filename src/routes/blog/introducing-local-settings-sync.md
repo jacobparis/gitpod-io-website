@@ -12,9 +12,9 @@ title: Introducing VS Code Desktop Settings Sync
   export const prerender = true;
 </script>
 
-Tl;dr: from now, you can use Settings Sync with Gitpod in VS Code Desktop. You can read [the docs](https://www.gitpod.io/docs/ides-and-editors/settings-sync#enabling-settings-sync-in-vs-code-desktop) for more info.
+Tl;dr: from now, you can use [Settings Sync](https://code.visualstudio.com/docs/editor/settings-sync) with Gitpod in VS Code Desktop. You can read [the docs](https://www.gitpod.io/docs/ides-and-editors/settings-sync#enabling-settings-sync-in-vs-code-desktop) for more info.
 
-Visual Studio Code enables you to synchronize your settings, themes, extensions and other preferences across machines via a feature called [Settings Sync](https://code.visualstudio.com/docs/editor/settings-sync). This feature is convenient for both having all your machines' preferences in sync, but also for quickly bootstrapping your editor on any new machine, just the way you like it.
+Visual Studio Code enables you to synchronize your settings, themes, extensions and other preferences across machines via a feature called Settings Sync. This feature is convenient for both having all your machines' preferences in sync, but also for quickly bootstrapping your editor on any new machine, just the way you like it.
 
 Implementing Settings Sync was achieved by creating a custom version of the Settings Sync backend, because the setting sync server that Microsoft provides with their Settings Sync service is private and therefore inaccessible to 3rd party services like Gitpod.
 
