@@ -14,7 +14,7 @@ export const pricingPlans: Pricing[] = [
     title: "Community",
     price: `${isEurope() ? "€" : "$"}0`,
     btnText: "Install now",
-    btnHref: "/docs/self-hosted/latest",
+    btnHref: "/community-license",
     trackingName: "community",
     plans: [
       {

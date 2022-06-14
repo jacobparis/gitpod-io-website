@@ -16,7 +16,7 @@
   import Select from "$lib/components/ui-library/select";
   import Card from "$lib/components/ui-library/card";
   import Button from "$lib/components/ui-library/button";
-  import { noOfEngineers } from "$lib/contents/contact";
+  import { cloudPlatforms, noOfEngineers } from "$lib/contents/contact";
   import { scrollToElement } from "$lib/utils/helpers";
   import { tick } from "svelte";
   import Unleashing from "$lib/components/contact/unleashing.svelte";
@@ -31,12 +31,6 @@
     "Educational Discount",
     "Reselling",
     otherSubject,
-  ];
-  const cloudPlatforms = [
-    "Amazon Elastic Kubernetes Service (EKS)",
-    "Google Kubernetes Engine (GKE)",
-    "Kubernetes",
-    "Microsoft Azure Kubernetes Service (AKS)",
   ];
 
   let sectionStart: HTMLElement;

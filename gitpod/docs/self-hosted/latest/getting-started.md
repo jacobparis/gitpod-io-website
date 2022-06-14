@@ -65,7 +65,7 @@ You will be asked for the namespace you want to install Gitpod to as well as a p
 
 Open your favorite browser and go to `http://localhost:8800` (port `8800` is opened on your node on `localhost` only--you may want to forward the port to your workstation in order to access the admin console).
 
-The first page will ask you to upload your Gitpod license. We provide a community license for free (right click and save link as [here](https://raw.githubusercontent.com/gitpod-io/gitpod/main/install/licenses/Community.yaml)). To get an enterprise license, [fill out this form](/enterprise-license). For more information about our licenses and respective pricing plans, please visit our [self-hosted pricing page](https://www.gitpod.io/self-hosted).
+The first page will ask you to upload your Gitpod license which you can get [here](/community-license) For more information about our licenses and respective pricing plans, please visit our [self-hosted pricing page](https://www.gitpod.io/self-hosted).
 
 After uploading the license, you will be forwarded to the config page. On this page, you need to enter your domain name for your Gitpod installation. You can also configure to use [external components](./required-components) (by default internal ones are installed) as well as your TLS certs setup. Click “Continue” to proceed with the installation.
 
