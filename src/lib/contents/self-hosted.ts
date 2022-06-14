@@ -47,8 +47,8 @@ export const pricingPlans: Pricing[] = [
   },
   {
     title: "Professional",
-    price: isEurope() ? "€29" : "$35",
-    duration: "per user/month",
+    price: isEurope() ? "Custom" : "Custom",
+    duration: "",
     features: [
       "Starts after the 11th user",
       {
@@ -245,7 +245,7 @@ export const professionalPlanTableData: FeatureTableColumn = {
   isHighlighted: true,
   header: {
     headline: "Professional",
-    subtitle: `${isEurope() ? "€29" : "$35"} per user/month`,
+    subtitle: `${isEurope() ? "Custom Pricing" : "Custom Pricing"}`,
     isMostPopular: true,
   },
   link: {
