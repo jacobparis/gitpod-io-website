@@ -13,25 +13,6 @@ title: DevX Conf wrap and distributing USD $22,600 to Open-source projects
   export const prerender = true;
 </script>
 
-<script lang="ts">
-  import Quote from "$lib/components/quote.svelte";
-</script>
-
-<style>
-  .banner {
-    @apply mt-x-large -mb-x-small;
-  }
-
-  blockquote {
-    @apply bg-transparent border-l-4 border-primary pl-xx-small py-0 sm:m-small rounded-none !important;
-  }
-
-  blockquote p {
-    @apply text-important text-xl font-semibold !important;
-    line-height: 35px;
-  }
-</style>
-
 And it's a wrap. We want to thank everyone who joined us last month at [DevX Conf](https://devxconf.org/) and welcome readers who are reading about the conference for the first time. The talks are now available for viewing and USD $22,600 is being distributed to Open-source projects that conference attendees voted for.
 
 Several of the hottest, most impactful developer tools of the current time were presented at DevX Conf. The conference is evolving to be a space where developer tool founders share what they've been working on all year. The themes that stood out in 2022 were automation (think, [Fig](https://www.youtube.com/watch?v=VhxGX8MV3Vw), [Warp](https://www.youtube.com/watch?v=EFbicktk6C4), [Supabase](https://www.youtube.com/watch?v=1Tz0FBoqCTQ)), collaboration (think, [Zed](https://www.youtube.com/watch?v=wXT73bBr83s)), and integration testing (think, [AtomicJar](https://www.youtube.com/watch?v=A_I8_3UFHo0)). The continued transition to cloud development was a centrepiece of discussions at DevX Conf. Next to Gitpod, we saw Okteto and [Codespaces](https://www.gitpod.io/blog/cake) talk about remote developer environments.
