@@ -16,7 +16,7 @@ Tl;dr: from now, you can use Settings Sync with Gitpod in VS Code Desktop. You c
 
 Visual Studio Code enables you to synchronize your settings, themes, extensions and other preferences across machines via a feature called [Settings Sync](https://code.visualstudio.com/docs/editor/settings-sync). This feature is convenient for both having all your machines' preferences in sync, but also for quickly bootstrapping your editor on any new machine, just the way you like it.
 
-Implementing Settings Sync was achieved by Gitpod making an open-source version of the Settings Sync backend, because the setting sync server that Microsoft provides with their Settings Sync service is private and therefore inaccessible to 3rd party services.
+Implementing Settings Sync was achieved by creating a custom version of the Settings Sync backend, because the setting sync server that Microsoft provides with their Settings Sync service is private and therefore inaccessible to 3rd party services like Gitpod.
 
 It's nice having Settings Sync work with VS Code in the browser, but how are you supposed to bring the settings you have on your local machine to Gitpod? Should you copy your whole JSON file with your settings and manually install every extension that you have locally?
 
