@@ -8,8 +8,12 @@
 
   import docsCurrentSectionStore from "$lib/stores/docs-current-section";
   import EditInGitpod from "../edit-in-gitpod.svelte";
+  import { navigating } from "$app/stores";
   export let MENU;
 
+  $: if ($navigating) {
+    $topicsState = false;
+  }
   $: currentSection = MENU.find(({ path }) =>
     $docsCurrentSectionStore
       ? path.indexOf(
